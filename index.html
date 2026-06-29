@@ -31,8 +31,19 @@
   .wrap{max-width:680px; margin:0 auto; padding:0 18px 44px;}
   a{color:var(--accent);}
 
+  /* 언어 전환 (한국어 / ENG) */
+  .langbar{max-width:680px; margin:0 auto; padding:10px 18px 0;
+    display:flex; justify-content:flex-end; gap:6px;}
+  .langbtn{font-size:12px; font-weight:700; padding:5px 12px; border-radius:999px;
+    cursor:pointer; border:1px solid var(--line); background:var(--card); color:var(--text2);}
+  .langbtn.on{background:var(--text); color:#fff; border-color:var(--text);}
+
+  /* 언어별 표시 */
+  body.lang-ko .t-en{display:none;}
+  body.lang-en .t-ko{display:none;}
+
   /* 상단 히어로 */
-  .hero{padding:30px 18px 20px; text-align:center;
+  .hero{padding:18px 18px 20px; text-align:center;
     background:radial-gradient(120% 80% at 50% 0%, #ffffff 0%, var(--bg) 70%);}
   .hero .tag{display:inline-block; font-size:13px; font-weight:700; color:var(--red);
     background:var(--redbg); border:1px solid var(--red); border-radius:16px;
@@ -58,6 +69,7 @@
   .stitle b{color:var(--text);}
   .problems .stitle{font-size:16px; color:var(--text); letter-spacing:0;
     white-space:nowrap; font-weight:700;}
+  body.lang-en .problems .stitle{white-space:normal;}
 
   /* 한줄요약 박스 */
   .summary{background:var(--redbg); border:1px solid #f6c9cb;
@@ -105,12 +117,9 @@
   .share{display:flex; gap:10px; margin-top:8px;}
   .share button{flex:1; background:var(--red); color:#fff; border:none;
     padding:15px; border-radius:12px; font-size:15px; font-weight:700; cursor:pointer;}
-  .share button.ghost{background:var(--card); color:var(--text); border:1px solid var(--line);}
-
-  footer{padding:40px 18px 50px; text-align:center; color:var(--text2); font-size:12px;}
 </style>
 </head>
-<body>
+<body class="lang-ko">
 
 <!-- ===================================================================== -->
 <!--  ★ 기사·자료는 여기만 고치면 됩니다 ★                                   -->
@@ -135,132 +144,153 @@ const 자료목록 = [
 <!-- ===================================================================== -->
 
 
+<div class="langbar">
+  <button class="langbtn" data-lang="ko" onclick="setLang('ko')">한국어</button>
+  <button class="langbtn" data-lang="en" onclick="setLang('en')">ENG</button>
+</div>
+
 <div class="hero">
-  <span class="tag">청량리 롯데캐슬 SKY-L65 바로 앞<br/>변전소 건설 문제</span>
-  <h1>초고층 주거타워 <b>18.2m</b> 앞,<br/>초고압 변전소가 들어섭니다.</h1>
-  <p>GTX-C 청량리 변전소 건설, <b class="q">무엇이 문제인가?</b></p>
+  <span class="tag">
+    <span class="t-ko">청량리 롯데캐슬 SKY-L65 바로 앞<br/>변전소 건설 문제</span>
+    <span class="t-en">Substation construction right next to<br/>Cheongnyangni Lotte Castle SKY-L65</span>
+  </span>
+  <h1>
+    <span class="t-ko">초고층 주거타워 <b>18.2m</b> 앞,<br/>초고압 변전소가 들어섭니다.</span>
+    <span class="t-en">A high-voltage substation,<br/>just <b>18.2m</b> from a high-rise tower.</span>
+  </h1>
+  <p>
+    <span class="t-ko">GTX-C 청량리 변전소 건설, <b class="q">무엇이 문제인가?</b></span>
+    <span class="t-en">GTX-C Cheongnyangni substation — <b class="q">what's the problem?</b></span>
+  </p>
 </div>
 
 <div class="nums">
-  <div class="num danger"><div class="big">18.2m</div><div class="lbl">A동과의 거리</div></div>
-  <div class="num danger"><div class="big">48.8m</div><div class="lbl">어린이집 거리</div></div>
-  <div class="num safe"><div class="big">50m</div><div class="lbl">환경부 권고기준</div></div>
+  <div class="num danger"><div class="big">18.2m</div><div class="lbl"><span class="t-ko">A동과의 거리</span><span class="t-en">to Tower A</span></div></div>
+  <div class="num danger"><div class="big">48.8m</div><div class="lbl"><span class="t-ko">어린이집 거리</span><span class="t-en">to daycare</span></div></div>
+  <div class="num safe"><div class="big">50m</div><div class="lbl"><span class="t-ko">환경부 권고기준</span><span class="t-en">Ministry guideline</span></div></div>
 </div>
 
 <div class="wrap">
 
   <section>
     <div class="summary">
-      단순한 “내 집 앞은 싫다”식 반대가 아닌,
+      <span class="t-ko">단순한 “내 집 앞은 싫다”식 반대가 아닌,</span>
+      <span class="t-en">This is not a simple “not in my backyard” complaint —</span>
       <ul>
-        <li>주거지와의 과도한 근접성</li>
-        <li>전자파·안전 우려</li>
-        <li>정부 권고 기준 50m 미달</li>
-        <li>입지 선정 과정의 타당성 의문</li>
-        <li>부족한 주민 소통</li>
+        <li><span class="t-ko">주거지와의 과도한 근접성</span><span class="t-en">Excessive proximity to homes</span></li>
+        <li><span class="t-ko">전자파·안전 우려</span><span class="t-en">EMF &amp; safety concerns</span></li>
+        <li><span class="t-ko">정부 권고 기준 50m 미달</span><span class="t-en">Below the 50m government guideline</span></li>
+        <li><span class="t-ko">입지 선정 과정의 타당성 의문</span><span class="t-en">Doubts over the site selection</span></li>
+        <li><span class="t-ko">부족한 주민 소통</span><span class="t-en">Insufficient resident communication</span></li>
       </ul>
-      <div class="close">여러 쟁점이 복합적으로 얽혀 있는<br/><b>중대한 공익 사안</b></div>
+      <div class="close">
+        <span class="t-ko">여러 쟁점이 복합적으로 얽혀 있는<br/><b>중대한 공익 사안</b></span>
+        <span class="t-en">a <b>serious public-interest issue</b><br/>with many overlapping concerns</span>
+      </div>
     </div>
   </section>
 
   <section class="problems">
-    <div class="stitle">⚠️ 청량리 변전소 건설 관련 <b>8가지 핵심 쟁점</b></div>
+    <div class="stitle">
+      <span class="t-ko">⚠️ 청량리 변전소 건설 관련 <b>8가지 핵심 쟁점</b></span>
+      <span class="t-en">⚠️ <b>8 Key Issues</b> with the Cheongnyangni Substation</span>
+    </div>
 
     <div class="card">
-      <h3><span class="n">1</span>65층 바로 앞 변전소</h3>
-      <p class="easy">초고압 변전 설비와의 과도한 근접성</p>
+      <h3><span class="n">1</span><span class="t-ko">65층 바로 앞 변전소</span><span class="t-en">Substation Right in Front of a 65-Story Tower</span></h3>
+      <p class="easy"><span class="t-ko">초고압 변전 설비와의 과도한 근접성</span><span class="t-en">Excessive proximity to high-voltage equipment</span></p>
       <ul>
-        <li>A동과 약 <strong>18.2m</strong></li>
-        <li>경비실과 약 <strong>19.1m</strong></li>
-        <li>어린이집과 약 <strong>48.8m</strong></li>
+        <li><span class="t-ko">A동과 약 <strong>18.2m</strong></span><span class="t-en">About <strong>18.2m</strong> from Tower A</span></li>
+        <li><span class="t-ko">경비실과 약 <strong>19.1m</strong></span><span class="t-en">About <strong>19.1m</strong> from the security office</span></li>
+        <li><span class="t-ko">어린이집과 약 <strong>48.8m</strong></span><span class="t-en">About <strong>48.8m</strong> from the daycare</span></li>
       </ul>
     </div>
 
     <div class="card">
-      <h3><span class="n">2</span>환경부 권고 기준 미달 논란</h3>
-      <p class="easy">50m 이격 기준에 못 미치는 위치</p>
+      <h3><span class="n">2</span><span class="t-ko">환경부 권고 기준 미달 논란</span><span class="t-en">Falls Short of the Government Guideline</span></h3>
+      <p class="easy"><span class="t-ko">50m 이격 기준에 못 미치는 위치</span><span class="t-en">Closer than the 50m separation standard</span></p>
       <ul>
-        <li>환경부 권고 <strong>50m 미달</strong> 문제 제기</li>
-        <li><strong>GTX-A와 다른 기준</strong> 적용 논란</li>
-        <li>노선별 <strong>형평성 문제</strong></li>
+        <li><span class="t-ko">환경부 권고 <strong>50m 미달</strong> 문제 제기</span><span class="t-en">Below the Ministry of Environment's <strong>50m guideline</strong></span></li>
+        <li><span class="t-ko"><strong>GTX-A와 다른 기준</strong> 적용 논란</span><span class="t-en">A <strong>different standard</strong> than GTX-A</span></li>
+        <li><span class="t-ko">노선별 <strong>형평성 문제</strong></span><span class="t-en"><strong>Fairness</strong> issue across lines</span></li>
       </ul>
     </div>
 
     <div class="card">
-      <h3><span class="n">3</span>전자파·화재 등 안전 우려</h3>
-      <p class="easy">장시간 생활 노출에 대한 주민 불안</p>
+      <h3><span class="n">3</span><span class="t-ko">전자파·화재 등 안전 우려</span><span class="t-en">Safety Concerns — EMF &amp; Fire</span></h3>
+      <p class="easy"><span class="t-ko">장시간 생활 노출에 대한 주민 불안</span><span class="t-en">Anxiety over long-term daily exposure</span></p>
       <ul>
-        <li>전력 변환 과정의 <strong>전자파 우려</strong></li>
-        <li><strong>화재·사고 가능성</strong> 걱정</li>
-        <li>정부 설명과 주민 체감의 <strong>간극</strong></li>
+        <li><span class="t-ko">전력 변환 과정의 <strong>전자파 우려</strong></span><span class="t-en"><strong>EMF</strong> from power conversion</span></li>
+        <li><span class="t-ko"><strong>화재·사고 가능성</strong> 걱정</span><span class="t-en">Risk of <strong>fire and accidents</strong></span></li>
+        <li><span class="t-ko">정부 설명과 주민 체감의 <strong>간극</strong></span><span class="t-en"><strong>Gap</strong> between claims and reality</span></li>
       </ul>
     </div>
 
     <div class="card">
-      <h3><span class="n">4</span>초고층 주거 밀집지역 입지</h3>
-      <p class="easy">사람이 모이는 생활권 한복판</p>
+      <h3><span class="n">4</span><span class="t-ko">초고층 주거 밀집지역 입지</span><span class="t-en">Sited in a Dense High-Rise Area</span></h3>
+      <p class="easy"><span class="t-ko">사람이 모이는 생활권 한복판</span><span class="t-en">In the heart of a busy living zone</span></p>
       <ul>
-        <li><strong>초고층 대단지</strong>와 인접</li>
-        <li>주변 <strong>주상복합 추가 개발</strong> 예정</li>
-        <li>향후 <strong>인구 밀집 가능성</strong></li>
+        <li><span class="t-ko"><strong>초고층 대단지</strong>와 인접</span><span class="t-en">Adjacent to <strong>high-rise complexes</strong></span></li>
+        <li><span class="t-ko">주변 <strong>주상복합 추가 개발</strong> 예정</span><span class="t-en">More <strong>mixed-use development</strong> nearby</span></li>
+        <li><span class="t-ko">향후 <strong>인구 밀집 가능성</strong></span><span class="t-en"><strong>Rising population density</strong> ahead</span></li>
       </ul>
     </div>
 
     <div class="card">
-      <h3><span class="n">5</span>왜 청량리인가</h3>
-      <p class="easy">서울숲보다 불리한 입지 선택 논란</p>
+      <h3><span class="n">5</span><span class="t-ko">왜 청량리인가</span><span class="t-en">Why Cheongnyangni?</span></h3>
+      <p class="easy"><span class="t-ko">서울숲보다 불리한 입지 선택 논란</span><span class="t-en">A less favorable site than Seoul Forest</span></p>
       <ul>
-        <li>서울숲, <strong>시공성·경제성 더 우수</strong></li>
-        <li>청량리, 지하형 변전소 <strong>공사·비용 불리</strong></li>
-        <li>더 유리한 후보지 대신 <strong>청량리 선택</strong></li>
+        <li><span class="t-ko">서울숲, <strong>시공성·경제성 더 우수</strong></span><span class="t-en">Seoul Forest: <strong>better feasibility &amp; cost</strong></span></li>
+        <li><span class="t-ko">청량리, 지하형 변전소 <strong>공사·비용 불리</strong></span><span class="t-en">Cheongnyangni: <strong>costly underground build</strong></span></li>
+        <li><span class="t-ko">더 유리한 후보지 대신 <strong>청량리 선택</strong></span><span class="t-en"><strong>Chosen over</strong> a better site</span></li>
       </ul>
     </div>
 
     <div class="card">
-      <h3><span class="n">6</span>절차적 소통 부족</h3>
-      <p class="easy">주민에게 충분히 설명되지 않은 결정</p>
+      <h3><span class="n">6</span><span class="t-ko">절차적 소통 부족</span><span class="t-en">Lack of Due Process</span></h3>
+      <p class="easy"><span class="t-ko">주민에게 충분히 설명되지 않은 결정</span><span class="t-en">A decision made without enough explanation</span></p>
       <ul>
-        <li><strong>사전 정보 제공 부족</strong></li>
-        <li><strong>주민 의견수렴 부족</strong></li>
-        <li><strong>공론화 없는 절차</strong> 진행 논란</li>
+        <li><span class="t-ko"><strong>사전 정보 제공 부족</strong></span><span class="t-en"><strong>Insufficient advance information</strong></span></li>
+        <li><span class="t-ko"><strong>주민 의견수렴 부족</strong></span><span class="t-en"><strong>Little resident input</strong></span></li>
+        <li><span class="t-ko"><strong>공론화 없는 절차</strong> 진행 논란</span><span class="t-en">Advanced <strong>without public debate</strong></span></li>
       </ul>
     </div>
 
     <div class="card">
-      <h3><span class="n">7</span>행정기관 대응 논란</h3>
-      <p class="easy">주민 우려에 대한 대응 부족</p>
+      <h3><span class="n">7</span><span class="t-ko">행정기관 대응 논란</span><span class="t-en">Questionable Government Response</span></h3>
+      <p class="easy"><span class="t-ko">주민 우려에 대한 대응 부족</span><span class="t-en">Inadequate response to residents</span></p>
       <ul>
-        <li>동대문구 대응 <strong>소극적 비판</strong></li>
-        <li>타 지역 <strong>민원 회피 논란</strong></li>
-        <li><strong>책임 회피 문제</strong> 제기</li>
+        <li><span class="t-ko">동대문구 대응 <strong>소극적 비판</strong></span><span class="t-en">Dongdaemun-gu seen as <strong>passive</strong></span></li>
+        <li><span class="t-ko">타 지역 <strong>민원 회피 논란</strong></span><span class="t-en"><strong>Avoiding complaints</strong> from other areas</span></li>
+        <li><span class="t-ko"><strong>책임 회피 문제</strong> 제기</span><span class="t-en">Accused of <strong>dodging responsibility</strong></span></li>
       </ul>
     </div>
 
     <div class="card">
-      <h3><span class="n">8</span>GTX-C 사업 지연 가능성</h3>
-      <p class="easy">갈등 장기화 시 일정 영향</p>
+      <h3><span class="n">8</span><span class="t-ko">GTX-C 사업 지연 가능성</span><span class="t-en">Risk of GTX-C Delays</span></h3>
+      <p class="easy"><span class="t-ko">갈등 장기화 시 일정 영향</span><span class="t-en">Prolonged conflict may affect the schedule</span></p>
       <ul>
-        <li>준공 <strong>2028년 → 2030년 연기</strong></li>
-        <li>갈등 지속 시 <strong>추가 지연 우려</strong></li>
-        <li>노선 전체 일정의 <strong>변수</strong></li>
+        <li><span class="t-ko">준공 <strong>2028년 → 2030년 연기</strong></span><span class="t-en">Completion <strong>pushed 2028 → 2030</strong></span></li>
+        <li><span class="t-ko">갈등 지속 시 <strong>추가 지연 우려</strong></span><span class="t-en"><strong>Further delays</strong> if conflict continues</span></li>
+        <li><span class="t-ko">노선 전체 일정의 <strong>변수</strong></span><span class="t-en">A <strong>variable</strong> for the whole line</span></li>
       </ul>
     </div>
   </section>
 
   <section class="news">
-    <div class="stitle">관련 <b>기사</b></div>
+    <div class="stitle"><span class="t-ko">관련 <b>기사</b></span><span class="t-en">Related <b>News</b></span></div>
     <div id="newsList"></div>
   </section>
 
   <section class="news">
-    <div class="stitle">관련 <b>자료</b></div>
+    <div class="stitle"><span class="t-ko">관련 <b>자료</b></span><span class="t-en">Related <b>Materials</b></span></div>
     <div id="dataList"></div>
   </section>
 
   <section>
-    <div class="stitle">함께 <b>알려주세요</b></div>
+    <div class="stitle"><span class="t-ko">함께 <b>알려주세요</b></span><span class="t-en">Help <b>Spread the Word</b></span></div>
     <div class="share">
-      <button onclick="주소복사()">🔗 링크 복사</button>
+      <button onclick="주소복사()"><span class="t-ko">🔗 링크 복사</span><span class="t-en">🔗 Copy Link</span></button>
     </div>
   </section>
 
@@ -268,12 +298,22 @@ const 자료목록 = [
 
 
 <script>
-  // 기사 목록을 화면에 그리기
+  // 언어 전환
+  function setLang(l){
+    document.body.classList.remove('lang-ko','lang-en');
+    document.body.classList.add('lang-' + l);
+    document.documentElement.lang = (l === 'en') ? 'en' : 'ko';
+    document.querySelectorAll('.langbtn').forEach(b => b.classList.toggle('on', b.dataset.lang === l));
+    try { localStorage.setItem('lang', l); } catch(e){}
+  }
+  setLang((function(){ try { return localStorage.getItem('lang') || 'ko'; } catch(e){ return 'ko'; } })());
+
+  // 관련 기사 그리기
   (function(){
     const box = document.getElementById('newsList');
     const 유효 = 기사목록.filter(g => g.주소 && g.주소.startsWith('http'));
     if(유효.length === 0){
-      box.innerHTML = '<div class="empty">등록된 기사가 아직 없습니다.<br/>곧 추가될 예정입니다.</div>';
+      box.innerHTML = '<div class="empty"><span class="t-ko">등록된 기사가 아직 없습니다.<br/>곧 추가될 예정입니다.</span><span class="t-en">No news links yet.<br/>Coming soon.</span></div>';
       return;
     }
     box.innerHTML = 유효.map(g => `
@@ -291,7 +331,7 @@ const 자료목록 = [
     const box = document.getElementById('dataList');
     const 유효 = 자료목록.filter(d => d.이미지);
     if(유효.length === 0){
-      box.innerHTML = '<div class="empty">등록된 자료가 아직 없습니다.<br/>곧 추가될 예정입니다.</div>';
+      box.innerHTML = '<div class="empty"><span class="t-ko">등록된 자료가 아직 없습니다.<br/>곧 추가될 예정입니다.</span><span class="t-en">No materials yet.<br/>Coming soon.</span></div>';
       return;
     }
     box.innerHTML = '<div class="gallery">' + 유효.map(d => `
@@ -301,10 +341,14 @@ const 자료목록 = [
       </a>`).join('') + '</div>';
   })();
 
-  // 공유 / 복사
+  // 링크 복사
   function 주소복사(){
+    const en = document.body.classList.contains('lang-en');
+    const msg = en
+      ? 'Link copied.\nPaste it into a message to share.'
+      : '링크가 복사되었습니다.\n카카오톡·문자로 붙여넣어 공유하세요.';
     navigator.clipboard.writeText(location.href)
-      .then(()=> alert('링크가 복사되었습니다.\n카카오톡·문자로 붙여넣어 공유하세요.'))
+      .then(()=> alert(msg))
       .catch(()=> alert(location.href));
   }
 </script>
