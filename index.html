@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta name="color-scheme" content="light only" />
+<title>아파트 18m 앞 청량리 변전소, 무엇이 문제인가</title>
+<meta name="description" content="청량리 롯데캐슬 SKY-L65 앞 GTX-C 변전소 건설 문제점 정리. 주거지 18.2m 초근접, 환경부 권고 50m 미달, 전자파·안전 우려." />
+
+<!-- 카카오톡/네이버 공유 시 보이는 미리보기 -->
+<meta property="og:title" content="아파트 18m 앞 청량리 변전소, 무엇이 문제인가" />
+<meta property="og:description" content="우리 집 18.2m 앞에 초고압 변전소가 들어섭니다. 함께 알려주세요." />
+<meta property="og:type" content="website" />
+
+<style>
+  :root{
+    --bg:#f5f7fa; --card:#ffffff; --card2:#eef1f5;
+    --text:#1a2129; --text2:#5b6876; --line:#e2e7ec;
+    --red:#e23b41; --redbg:#fdeeef; --accent:#1668c7;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+    line-height:1.65; -webkit-text-size-adjust:100%;
+    word-break:keep-all; overflow-wrap:break-word;
+  }
+  .wrap{max-width:680px; margin:0 auto; padding:0 18px 44px;}
+  a{color:var(--accent);}
+
+  /* 상단 히어로 */
+  .hero{padding:30px 18px 20px; text-align:center;
+    background:radial-gradient(120% 80% at 50% 0%, #ffffff 0%, var(--bg) 70%);}
+  .hero .tag{display:inline-block; font-size:13px; font-weight:700; color:var(--red);
+    background:var(--redbg); border:1px solid var(--red); border-radius:16px;
+    padding:7px 14px; margin-bottom:14px; line-height:1.5;
+    box-shadow:0 2px 8px rgba(226,59,65,.15);}
+  .hero h1{font-size:26px; font-weight:800; line-height:1.35; letter-spacing:-0.5px;}
+  .hero h1 b{color:var(--red);}
+  .hero p{margin-top:10px; color:var(--text); font-size:15px;}
+  .hero p .q{color:var(--red); font-weight:800;}
+
+  /* 핵심 수치 3개 */
+  .nums{display:flex; gap:10px; max-width:680px; margin:8px auto 0; padding:0 18px 8px;}
+  .num{flex:1; border-radius:14px; padding:16px 8px; text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,.12);}
+  .num.danger{background:var(--red);}
+  .num.safe{background:#1f9d57;}
+  .num .big{font-size:24px; font-weight:800; color:#fff; line-height:1;}
+  .num .lbl{font-size:12px; color:#fff; opacity:.92; margin-top:8px;}
+
+  /* 섹션 공통 */
+  section{padding:30px 0 6px;}
+  .stitle{font-size:13px; color:var(--text2); letter-spacing:1px; margin-bottom:14px;}
+  .stitle b{color:var(--text);}
+  .problems .stitle{font-size:16px; color:var(--text); letter-spacing:0;
+    white-space:nowrap; font-weight:700;}
+
+  /* 한줄요약 박스 */
+  .summary{background:var(--redbg); border:1px solid #f6c9cb;
+    border-radius:16px; padding:20px; font-size:16px; line-height:1.7;}
+  .summary b{color:var(--red);}
+  .summary ul{list-style:none; margin-top:12px; padding-left:2px;}
+  .summary li{font-size:15px; font-weight:700; margin-top:7px; padding-left:16px; position:relative;}
+  .summary li::before{content:'·'; position:absolute; left:2px; color:var(--red); font-weight:800;}
+  .summary .close{margin-top:13px;}
+
+  /* 문제점 카드 */
+  .card{background:var(--card); border:1px solid var(--line);
+    border-radius:16px; padding:18px 18px 16px; margin-bottom:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,.06);}
+  .card .n{display:inline-flex; width:27px; height:27px; align-items:center; justify-content:center;
+    background:var(--red); color:#fff; font-weight:800; font-size:14px;
+    border-radius:8px; margin-right:10px; flex-shrink:0;}
+  .card h3{font-size:18px; font-weight:700; display:flex; align-items:center;
+    line-height:1.4; margin-bottom:12px;}
+  .card .easy{font-size:14.5px; color:var(--text); background:var(--card2);
+    border-radius:10px; padding:10px 13px; margin-bottom:13px; line-height:1.6; font-weight:600;}
+  .card ul{list-style:none; padding-left:4px;}
+  .card li{font-size:15px; color:var(--text2); margin-top:9px; padding-left:15px;
+    line-height:1.7; position:relative;}
+  .card li::before{content:'·'; position:absolute; left:2px; color:var(--text2); font-weight:700;}
+  .card li strong{color:var(--text); font-weight:700;}
+
+  /* 기사 링크 */
+  .news a.item{display:flex; align-items:center; justify-content:space-between;
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text);}
+  .news .meta{font-size:12px; color:var(--text2); margin-top:4px;}
+  .news .ttl{font-size:15px; font-weight:600; line-height:1.4;}
+  .news .arrow{color:var(--text2); font-size:18px; flex-shrink:0; margin-left:12px;}
+  .news .empty{color:var(--text2); font-size:14px; text-align:center; padding:20px;}
+
+  /* 공유 버튼 */
+  .share{display:flex; gap:10px; margin-top:8px;}
+  .share button{flex:1; background:var(--red); color:#fff; border:none;
+    padding:15px; border-radius:12px; font-size:15px; font-weight:700; cursor:pointer;}
+  .share button.ghost{background:var(--card); color:var(--text); border:1px solid var(--line);}
+
+  footer{padding:40px 18px 50px; text-align:center; color:var(--text2); font-size:12px;}
+</style>
+</head>
+<body>
+
+<!-- ===================================================================== -->
+<!--  ★ 기사 링크는 여기만 고치면 됩니다 ★                                  -->
+<!--  새 기사 추가 → 아래 { } 한 줄을 복사해서 쉼표 뒤에 붙여넣고 내용만 바꾸세요. -->
+<!--  맨 위에 넣을수록 페이지에서도 맨 위에 보입니다.                          -->
+<!-- ===================================================================== -->
+<script>
+const 기사목록 = [
+
+  // ↓ 새 기사 추가: 아래 한 줄을 복사해서 이 줄 아래에 붙여넣고 내용만 바꾸세요.
+  // { 제목: "기사 제목", 매체: "조선일보", 날짜: "2026.06.29", 주소: "https://news.naver.com/..." },
+
+];
+</script>
+<!-- ===================================================================== -->
+
+
+<div class="hero">
+  <span class="tag">청량리 롯데캐슬 SKY-L65 바로 앞<br/>변전소 건설 문제</span>
+  <h1>우리 집 <b>18.2m</b> 앞,<br/>초고압 변전소가 들어섭니다.</h1>
+  <p>GTX-C 청량리 변전소 건설, <b class="q">무엇이 문제인가?</b></p>
+</div>
+
+<div class="nums">
+  <div class="num danger"><div class="big">18.2m</div><div class="lbl">A동과의 거리</div></div>
+  <div class="num danger"><div class="big">48.8m</div><div class="lbl">어린이집 거리</div></div>
+  <div class="num safe"><div class="big">50m</div><div class="lbl">환경부 권고기준</div></div>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <div class="summary">
+      단순한 “내 집 앞은 싫다”식 반대가 아닌,
+      <ul>
+        <li>주거지와의 과도한 근접성</li>
+        <li>전자파·안전 우려</li>
+        <li>정부 권고 기준 50m 미달</li>
+        <li>입지 선정 과정의 타당성 의문</li>
+        <li>부족한 주민 소통</li>
+      </ul>
+      <div class="close">여러 쟁점이 복합적으로 얽혀 있는<br/><b>중대한 공익 사안</b></div>
+    </div>
+  </section>
+
+  <section class="problems">
+    <div class="stitle">⚠️ 청량리 변전소 건설 관련 <b>8가지 핵심 쟁점</b></div>
+
+    <div class="card">
+      <h3><span class="n">1</span>65층 바로 앞 변전소</h3>
+      <p class="easy">초고압 변전 설비와의 과도한 근접성</p>
+      <ul>
+        <li>A동과 약 <strong>18.2m</strong></li>
+        <li>경비실과 약 <strong>19.1m</strong></li>
+        <li>어린이집과 약 <strong>48.8m</strong></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3><span class="n">2</span>환경부 권고 기준 미달 논란</h3>
+      <p class="easy">50m 이격 기준에 못 미치는 위치</p>
+      <ul>
+        <li>환경부 권고 <strong>50m 미달</strong> 문제 제기</li>
+        <li><strong>GTX-A와 다른 기준</strong> 적용 논란</li>
+        <li>노선별 <strong>형평성 문제</strong></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3><span class="n">3</span>전자파·화재 등 안전 우려</h3>
+      <p class="easy">장시간 생활 노출에 대한 주민 불안</p>
+      <ul>
+        <li>전력 변환 과정의 <strong>전자파 우려</strong></li>
+        <li><strong>화재·사고 가능성</strong> 걱정</li>
+        <li>정부 설명과 주민 체감의 <strong>간극</strong></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3><span class="n">4</span>초고층 주거 밀집지역 입지</h3>
+      <p class="easy">사람이 모이는 생활권 한복판</p>
+      <ul>
+        <li><strong>초고층 대단지</strong>와 인접</li>
+        <li>주변 <strong>주상복합 추가 개발</strong> 예정</li>
+        <li>향후 <strong>인구 밀집 가능성</strong></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3><span class="n">5</span>왜 청량리인가</h3>
+      <p class="easy">서울숲보다 불리한 입지 선택 논란</p>
+      <ul>
+        <li>서울숲, <strong>시공성·경제성 더 우수</strong></li>
+        <li>청량리, 지하형 변전소 <strong>공사·비용 불리</strong></li>
+        <li>더 유리한 후보지 대신 <strong>청량리 선택</strong></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3><span class="n">6</span>절차적 소통 부족</h3>
+      <p class="easy">주민에게 충분히 설명되지 않은 결정</p>
+      <ul>
+        <li><strong>사전 정보 제공 부족</strong></li>
+        <li><strong>주민 의견수렴 부족</strong></li>
+        <li><strong>공론화 없는 절차</strong> 진행 논란</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3><span class="n">7</span>행정기관 대응 논란</h3>
+      <p class="easy">주민 우려에 대한 대응 부족</p>
+      <ul>
+        <li>동대문구 대응 <strong>소극적 비판</strong></li>
+        <li>타 지역 <strong>민원 회피 논란</strong></li>
+        <li><strong>책임 회피 문제</strong> 제기</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3><span class="n">8</span>GTX-C 사업 지연 가능성</h3>
+      <p class="easy">갈등 장기화 시 일정 영향</p>
+      <ul>
+        <li>준공 <strong>2028년 → 2030년 연기</strong></li>
+        <li>갈등 지속 시 <strong>추가 지연 우려</strong></li>
+        <li>노선 전체 일정의 <strong>변수</strong></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="news">
+    <div class="stitle">관련 <b>기사·자료</b></div>
+    <div id="newsList"></div>
+  </section>
+
+  <section>
+    <div class="stitle">함께 <b>알려주세요</b></div>
+    <div class="share">
+      <button onclick="주소복사()">🔗 링크 복사</button>
+    </div>
+  </section>
+
+</div>
+
+
+<script>
+  // 기사 목록을 화면에 그리기
+  (function(){
+    const box = document.getElementById('newsList');
+    const 유효 = 기사목록.filter(g => g.주소 && g.주소.startsWith('http'));
+    if(유효.length === 0){
+      box.innerHTML = '<div class="empty">등록된 기사가 아직 없습니다.<br/>곧 추가될 예정입니다.</div>';
+      return;
+    }
+    box.innerHTML = 유효.map(g => `
+      <a class="item" href="${g.주소}" target="_blank" rel="noopener">
+        <div>
+          <div class="ttl">${g.제목}</div>
+          <div class="meta">${g.매체 || ''}${g.날짜 ? ' · ' + g.날짜 : ''}</div>
+        </div>
+        <span class="arrow">›</span>
+      </a>`).join('');
+  })();
+
+  // 공유 / 복사
+  function 주소복사(){
+    navigator.clipboard.writeText(location.href)
+      .then(()=> alert('링크가 복사되었습니다.\n카카오톡·문자로 붙여넣어 공유하세요.'))
+      .catch(()=> alert(location.href));
+  }
+</script>
+
+</body>
+</html>
