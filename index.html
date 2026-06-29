@@ -94,6 +94,13 @@
   .news .arrow{color:var(--text2); font-size:18px; flex-shrink:0; margin-left:12px;}
   .news .empty{color:var(--text2); font-size:14px; text-align:center; padding:20px;}
 
+  /* 관련 자료(사진) 갤러리 */
+  .gallery{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+  .gallery a{display:block; text-decoration:none; color:var(--text);}
+  .gallery img{width:100%; height:140px; object-fit:cover; border-radius:12px;
+    border:1px solid var(--line); box-shadow:0 2px 8px rgba(0,0,0,.06); display:block;}
+  .gallery .cap{font-size:13px; color:var(--text2); margin-top:6px; line-height:1.4;}
+
   /* 공유 버튼 */
   .share{display:flex; gap:10px; margin-top:8px;}
   .share button{flex:1; background:var(--red); color:#fff; border:none;
@@ -106,15 +113,22 @@
 <body>
 
 <!-- ===================================================================== -->
-<!--  ★ 기사 링크는 여기만 고치면 됩니다 ★                                  -->
-<!--  새 기사 추가 → 아래 { } 한 줄을 복사해서 쉼표 뒤에 붙여넣고 내용만 바꾸세요. -->
+<!--  ★ 기사·자료는 여기만 고치면 됩니다 ★                                   -->
 <!--  맨 위에 넣을수록 페이지에서도 맨 위에 보입니다.                          -->
 <!-- ===================================================================== -->
 <script>
+// [관련 기사] 새 기사 추가 → 아래 { } 한 줄을 복사해서 이 줄 아래에 붙여넣고 내용만 바꾸세요.
 const 기사목록 = [
 
-  // ↓ 새 기사 추가: 아래 한 줄을 복사해서 이 줄 아래에 붙여넣고 내용만 바꾸세요.
   // { 제목: "기사 제목", 매체: "조선일보", 날짜: "2026.06.29", 주소: "https://news.naver.com/..." },
+
+];
+
+// [관련 자료(사진)] 추가 방법: ① GitHub의 images 폴더에 사진 파일을 올림
+//                            ② 아래 { } 한 줄을 복사해서 제목과 파일명을 바꾸세요.
+const 자료목록 = [
+
+  // { 제목: "변전소 위치도", 이미지: "images/map.jpg" },
 
 ];
 </script>
@@ -234,8 +248,13 @@ const 기사목록 = [
   </section>
 
   <section class="news">
-    <div class="stitle">관련 <b>기사·자료</b></div>
+    <div class="stitle">관련 <b>기사</b></div>
     <div id="newsList"></div>
+  </section>
+
+  <section class="news">
+    <div class="stitle">관련 <b>자료</b></div>
+    <div id="dataList"></div>
   </section>
 
   <section>
@@ -265,6 +284,21 @@ const 기사목록 = [
         </div>
         <span class="arrow">›</span>
       </a>`).join('');
+  })();
+
+  // 관련 자료(사진) 그리기
+  (function(){
+    const box = document.getElementById('dataList');
+    const 유효 = 자료목록.filter(d => d.이미지);
+    if(유효.length === 0){
+      box.innerHTML = '<div class="empty">등록된 자료가 아직 없습니다.<br/>곧 추가될 예정입니다.</div>';
+      return;
+    }
+    box.innerHTML = '<div class="gallery">' + 유효.map(d => `
+      <a href="${d.이미지}" target="_blank" rel="noopener">
+        <img src="${d.이미지}" alt="${d.제목 || ''}" loading="lazy" />
+        ${d.제목 ? `<div class="cap">${d.제목}</div>` : ''}
+      </a>`).join('') + '</div>';
   })();
 
   // 공유 / 복사
